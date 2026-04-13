@@ -1,0 +1,81 @@
+<div class="container py-4">
+  <!-- Success Modal -->
+  <div *ngIf="showSuccess" class="success-overlay">
+    <div class="success-card text-center">
+      <div class="success-icon">✓</div>
+      <h3>Booking Successful!</h3>
+      <p>Your room has been booked successfully.</p>
+      <p class="text-muted">Redirecting to dashboard...</p>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="booking">
+    <div class="col-md-7">
+      <!-- Amenities Section -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">🎁 Amenities & Services</h5>
+        </div>
+        <div class="card-body">
+          <div *ngFor="let amenity of amenities" class="amenity-item mb-3 p-2 border rounded">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" 
+                     [id]="'amenity' + amenity.id" 
+                     [(ngModel)]="amenity.selected"
+                     (change)="updateBill()">
+              <label class="form-check-label" [for]="'amenity' + amenity.id">
+                <strong>{{ amenity.name }}</strong> - ₹{{ amenity.price }}
+              </label>
+            </div>
+            <div class="ms-4 mt-2" *ngIf="amenity.selected">
+              <label class="small">Quantity:</label>
+              <input type="number" class="form-control form-control-sm" style="width: 80px;" 
+                     [(ngModel)]="amenity.quantity" (change)="updateBill()" min="1" max="10">
+            </div>
+            <small class="text-muted ms-4">{{ amenity.description }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-5">
+      <!-- Bill Summary -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0">💰 Bill Summary</h5>
+        </div>
+        <div class="card-body" *ngIf="bill">
+          <div class="bill-item d-flex justify-content-between mb-2">
+            <span>Room Charge:</span>
+            <span>₹{{ bill.roomCharge }}</span>
+          </div>
+          <div class="bill-item d-flex justify-content-between mb-2">
+            <span>Services:</span>
+            <span>₹{{ getServiceTotal() }}</span>
+          </div>
+          <div class="bill-item d-flex justify-content-between mb-2" *ngIf="bill.demandSurcharge > 0">
+            <span>Demand Surcharge:</span>
+            <span class="text-warning">₹{{ bill.demandSurcharge }}</span>
+          </div>
+          <div class="bill-item d-flex justify-content-between mb-2" *ngIf="bill.seasonSurcharge > 0">
+            <span>Season Surcharge:</span>
+            <span class="text-warning">₹{{ bill.seasonSurcharge }}</span>
+          </div>
+          <div class="bill-item d-flex justify-content-between mb-2">
+            <span>Tax (GST):</span>
+            <span>₹{{ bill.taxAmount }}</span>
+          </div>
+          <hr>
+          <div class="bill-total d-flex justify-content-between fw-bold fs-5">
+            <span>Total Amount:</span>
+            <span class="text-success">₹{{ bill.totalAmount + getServiceTotal() }}</span>
+          </div>
+          
+          <button class="btn btn-primary w-100 mt-4" (click)="checkout()" [disabled]="isLoading">
+            {{ isLoading ? 'Processing...' : '✅ Checkout' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

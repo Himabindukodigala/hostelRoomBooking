@@ -1,0 +1,52 @@
+<div class="container py-4">
+  <h2 class="text-center mb-4">All Rooms</h2>
+  
+  <!-- Filters Section -->
+  <div class="filters-card card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <label class="form-label fw-bold">Room Type</label>
+          <select class="form-select" [(ngModel)]="filterType" (change)="applyFilters()">
+            <option value="">All Types</option>
+            <option value="Single">Single Room</option>
+            <option value="Double">Double Room</option>
+            <option value="Suite">Suite</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-bold">Max Price: ₹{{ maxPrice }}</label>
+          <input type="range" class="form-range" [(ngModel)]="maxPrice" (change)="applyFilters()" 
+                 [min]="0" [max]="maxPossiblePrice" [step]="500">
+          <div class="d-flex justify-content-between">
+            <small>₹0</small>
+            <small>₹{{ maxPossiblePrice }}</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-bold">Availability</label>
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="showAvailableOnly" (change)="applyFilters()" id="availableOnly">
+            <label class="form-check-label" for="availableOnly">
+              Show available rooms only
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rooms Grid -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let room of filteredRooms">
+      <app-room-card [room]="room"></app-room-card>
+    </div>
+  </div>
+
+  <!-- No Results -->
+  <div *ngIf="filteredRooms.length === 0" class="text-center py-5">
+    <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" width="100" class="mb-3">
+    <h4>No rooms found</h4>
+    <p class="text-muted">Try adjusting your filters</p>
+  </div>
+</div>

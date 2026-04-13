@@ -1,0 +1,19 @@
+<p>room-card works!</p>
+<div class="card h-100 shadow-sm room-card">
+  <img [src]="room.imageUrl" class="card-img-top" [alt]="room.roomType">
+  <div class="card-body">
+    <h5 class="card-title">{{ room.roomType }}</h5>
+    <div class="mb-2">
+      <span *ngFor="let star of getStars(room.rating)" class="text-warning">★</span>
+      <span *ngFor="let star of getEmptyStars(room.rating)" class="text-muted">★</span>
+      <span class="ms-2">({{ room.rating }})</span>
+    </div>
+    <p class="card-text">{{ room.description | slice:0:100 }}...</p>
+    <p class="card-text">
+      <strong class="text-primary">₹{{ room.currentPrice }}/night</strong>
+      <br>
+      <small class="text-muted">Available: {{ room.availableRooms }} rooms</small>
+    </p>
+    <a [routerLink]="['/rooms', room.id]" class="btn btn-primary w-100">View Details</a>
+  </div>
+</div>

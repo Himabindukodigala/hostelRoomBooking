@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white text-center">
+          <h4 class="mb-0">🔐 Login to Your Account</h4>
+        </div>
+        <div class="card-body p-4">
+          <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+            {{ errorMessage }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+          
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" [(ngModel)]="loginData.email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" [(ngModel)]="loginData.password" name="password" required placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
+              {{ isLoading ? 'Logging in...' : 'Login' }}
+            </button>
+          </form>
+          
+          <hr class="my-4">
+          <p class="text-center mb-0">
+            Don't have an account? <a routerLink="/register" class="text-decoration-none">Register here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
