@@ -1,11 +1,3 @@
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.csproj.AssemblyReference.cache
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\rpswa.dswa.cache.json
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.AssemblyInfoInputs.cache
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.AssemblyInfo.cs
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.csproj.CoreCompileInputs.cache
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.MvcApplicationPartsAssemblyInfo.cs
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.MvcApplicationPartsAssemblyInfo.cache
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\appsettings.Development.json
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\appsettings.json
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\HotelBookingAPI.staticwebassets.endpoints.json
@@ -48,6 +40,9 @@ D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Microsof
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Mono.TextTemplating.dll
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Newtonsoft.Json.dll
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\System.ClientModel.dll
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\System.CodeDom.dll
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\System.Composition.AttributedModel.dll
@@ -142,6 +137,15 @@ D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\runtimes
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.csproj.AssemblyReference.cache
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.AssemblyInfoInputs.cache
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.AssemblyInfo.cs
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.csproj.CoreCompileInputs.cache
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.sourcelink.json
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\rjimswa.dswa.cache.json
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -157,6 +161,3 @@ D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\refint\H
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.pdb
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\HotelBookingAPI.genruntimeconfig.cache
 D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\obj\Debug\net10.0\ref\HotelBookingAPI.dll
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\rooms-Booking\hotelBooking\backend\HotelBookingAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
