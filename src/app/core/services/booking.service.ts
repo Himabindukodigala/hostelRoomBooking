@@ -6,7 +6,7 @@ import { CreateBookingDto, BookingResponse } from '../../shared/models/booking.m
 @Injectable({ providedIn: 'root' })
 export class BookingService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5000/api';
+  private apiUrl = 'http://localhost:5282/api';
 
   createBooking(bookingData: CreateBookingDto): Observable<{ bookingId: number }> {
     return this.http.post<{ bookingId: number }>(`${this.apiUrl}/bookings`, bookingData);

@@ -1,59 +1,50 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, ActivatedRoute, Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { BookingService } from '../../core/services/booking.service';
 import { BillService } from '../../core/services/bill.service';
 import { AmenityService } from '../../core/services/amenity.service';
 import { Bill, BookingResponse } from '../../shared/models/booking.model';
 import { Amenity } from '../../shared/models/room.model';
+import { StarRating } from '../../shared/components/star-rating/star-rating';
 
 @Component({
   standalone: true,
   selector: 'app-dashboard',
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, StarRating],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
-export class Dashboard  implements OnInit {
-  private route = inject(ActivatedRoute);
+export class Dashboard implements OnInit {
   private router = inject(Router);
   private bookingService = inject(BookingService);
   private billService = inject(BillService);
   private amenityService = inject(AmenityService);
   
-  bookingId!: number;
-  booking: BookingResponse | null = null;
-  bill: Bill | null = null;
+  bookings: BookingResponse[] = [];
   amenities: (Amenity & { selected: boolean, quantity: number })[] = [];
   isLoading = false;
-  showSuccess = false;
+  showReviewPopup = false;
+  selectedBooking: BookingResponse | null = null;
+  reviewRating = 5;
+  reviewComment = '';
 
   ngOnInit() {
-    this.bookingId = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadBookingDetails();
+    this.loadUserBookings();
     this.loadAmenities();
   }
 
-  loadBookingDetails() {
-    this.bookingService.getBookingById(this.bookingId).subscribe({
-      next: (booking) => {
-        this.booking = booking;
-        this.loadBill();
+  loadUserBookings() {
+    this.isLoading = true;
+    this.bookingService.getUserBookings().subscribe({
+      next: (bookings) => {
+        this.bookings = bookings;
+        this.isLoading = false;
       },
       error: () => {
-        alert('Failed to load booking details');
-      }
-    });
-  }
-
-  loadBill() {
-    this.billService.getBill(this.bookingId).subscribe({
-      next: (bill) => {
-        this.bill = bill;
-      },
-      error: () => {
-        console.error('Failed to load bill');
+        alert('Failed to load bookings');
+        this.isLoading = false;
       }
     });
   }
@@ -69,42 +60,44 @@ export class Dashboard  implements OnInit {
     });
   }
 
-  updateBill() {
-    if (!this.bill) return;
-    
-    const selectedServices = this.amenities.filter(a => a.selected);
-    const serviceTotal = selectedServices.reduce((sum, s) => sum + (s.price * s.quantity), 0);
-    
-    this.bill.serviceCharge = serviceTotal;
-    this.bill.totalAmount = this.bill.roomCharge + this.bill.serviceCharge + 
-                           this.bill.demandSurcharge + this.bill.seasonSurcharge + 
-                           this.bill.taxAmount;
+  getStatusClass(status: string): string {
+    switch(status) {
+      case 'Confirmed':
+        return 'badge bg-success';
+      case 'Pending':
+        return 'badge bg-warning';
+      case 'Cancelled':
+        return 'badge bg-danger';
+      default:
+        return 'badge bg-secondary';
+    }
   }
 
-  getServiceTotal(): number {
-    return this.amenities.filter(a => a.selected).reduce((sum, s) => sum + (s.price * s.quantity), 0);
+  openReview(booking: BookingResponse) {
+    this.selectedBooking = booking;
+    this.showReviewPopup = true;
   }
 
-  checkout() {
-    this.isLoading = true;
-    
-    // Update booking with selected services
-    const selectedServices = this.amenities.filter(a => a.selected).map(a => ({
-      amenityId: a.id,
-      quantity: a.quantity
-    }));
+  closeReview() {
+    this.showReviewPopup = false;
+    this.selectedBooking = null;
+    this.reviewRating = 5;
+    this.reviewComment = '';
+  }
 
-    this.bookingService.checkout(this.bookingId).subscribe({
-      next: () => {
-        this.showSuccess = true;
-        setTimeout(() => {
-          this.router.navigate(['/dashboard']);
-        }, 2000);
-      },
-      error: () => {
-        alert('Checkout failed. Please try again.');
-        this.isLoading = false;
-      }
-    });
+  onRatingChange(rating: number) {
+    this.reviewRating = rating;
+  }
+
+  submitReview() {
+    if (this.selectedBooking) {
+      console.log('Review submitted:', {
+        bookingId: this.selectedBooking.bookingId,
+        rating: this.reviewRating,
+        comment: this.reviewComment
+      });
+      this.closeReview();
+      alert('Review submitted successfully!');
+    }
   }
 }

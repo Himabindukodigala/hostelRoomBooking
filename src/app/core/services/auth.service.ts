@@ -7,7 +7,7 @@ import { LoginDto, RegisterDto, AuthResponse } from '../../shared/models/auth.mo
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5000/api';
+  private apiUrl = 'http://localhost:5282/api';
   
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
@@ -17,21 +17,29 @@ export class AuthService {
   }
 
   login(loginData: LoginDto): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, loginData).pipe(
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, loginData).pipe(
       tap(response => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('userName', response.userName);
-        this.isLoggedInSubject.next(true);
+        if (response.token) {
+          localStorage.setItem('token', response.token);
+          if (response.userName) {
+            localStorage.setItem('userName', response.userName);
+          }
+          this.isLoggedInSubject.next(true);
+        }
       })
     );
   }
 
   register(registerData: RegisterDto): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/register`, registerData).pipe(
+    return this.http.post<any>(`${this.apiUrl}/auth/register`, registerData).pipe(
       tap(response => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('userName', response.userName);
-        this.isLoggedInSubject.next(true);
+        if (response.token) {
+          localStorage.setItem('token', response.token);
+          if (response.userName) {
+            localStorage.setItem('userName', response.userName);
+          }
+          this.isLoggedInSubject.next(true);
+        }
       })
     );
   }

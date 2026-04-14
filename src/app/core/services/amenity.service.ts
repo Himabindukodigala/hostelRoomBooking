@@ -6,7 +6,7 @@ import { Amenity } from '../../shared/models/room.model';
 @Injectable({ providedIn: 'root' })
 export class AmenityService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5000/api';
+  private apiUrl = 'http://localhost:5282/api';
 
   getAllAmenities(): Observable<Amenity[]> {
     return this.http.get<Amenity[]>(`${this.apiUrl}/amenities`);

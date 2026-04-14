@@ -6,7 +6,7 @@ import { PriceEstimateRequest, PriceEstimateResponse } from '../../shared/models
 @Injectable({ providedIn: 'root' })
 export class PricingService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5000/api';
+  private apiUrl = 'http://localhost:5282/api';
 
   getPriceEstimate(request: PriceEstimateRequest): Observable<PriceEstimateResponse> {
     return this.http.post<PriceEstimateResponse>(`${this.apiUrl}/pricing/estimate`, request);

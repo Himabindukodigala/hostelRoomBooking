@@ -15,7 +15,7 @@
             <p><strong>Check-out:</strong> {{ booking.checkOutDate | date }}</p>
             <p><strong>Nights:</strong> {{ booking.numberOfDays }} | <strong>Rooms:</strong> {{ booking.numberOfRooms }}</p>
             <p><strong>Status:</strong> <span [class]="getStatusClass(booking.status)">{{ booking.status }}</span></p>
-            <p><strong>Total Amount:</strong> <span class="text-success fw-bold">₹{{ booking.bill?.totalAmount }}</span></p>
+            <p><strong>Total Amount:</strong> <span class="text-success fw-bold">₹{{ booking.bill.totalAmount }}</span></p>
           </div>
           <button class="btn btn-warning w-100" (click)="openReview(booking)" 
                   *ngIf="booking.status === 'Confirmed'">
@@ -61,15 +61,6 @@
           {{ isLoading ? 'Submitting...' : 'Submit Review' }}
         </button>
       </div>
-    </div>
-  </div>
-
-  <!-- Thank You Popup -->
-  <div *ngIf="showThankYou" class="thankyou-overlay">
-    <div class="thankyou-card text-center">
-      <div class="thankyou-icon">🙏</div>
-      <h3>Thank You!</h3>
-      <p>Your review has been submitted successfully.</p>
     </div>
   </div>
 </div>
